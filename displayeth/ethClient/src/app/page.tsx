@@ -20,12 +20,12 @@ export default function Home() {
       seteth(json.etherprice);
       console.log('Message from server:', event.data);
 };
-    // Event listener for error handling
+    
     ws.onerror = function (error) {
       console.error('WebSocket error:', error);
   };
 
-  // Clean up function to close the WebSocket connection when the component unmounts
+  
     return () => {
         ws.close();
   };
@@ -36,8 +36,21 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <p>Ethereum Gas: {gas} Gwei</p>
-        <p>Ethereum Price: ${eth} USD</p>
+        <div className={styles.ethInfo}>
+          <div className={styles.priceWithImage}>
+            <a href="https://github.com/ksamara2" target="_blank" className={styles.githubButton}>
+            <img src="github.png" alt="GitHub" />
+            </a>
+          </div>
+          <div className={styles.priceWithImage}>
+            <img src="ether.png" alt="Ethereum" className={styles.ethImage} />
+            <span>Ethereum Price: ${eth} USD</span>
+          </div>
+          <div className={styles.priceWithImage}>
+            <img src="ethgas.png" alt="Ethereum" className={styles.ethImage} />
+            <span>{gas} GWEI</span>
+          </div>
+        </div>
       </div>
     </div>
 

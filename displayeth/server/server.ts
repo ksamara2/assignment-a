@@ -11,7 +11,7 @@ async function fetchdata(): Promise<any>{
     const res = await fetch(ETHERSCAN_API_URL);
     let {result:{ethusd}} = await res.json();
 
-    const roundedeth = Math.round(ethusd * 1000) / 1000
+    const roundedeth = Math.round(ethusd * 100) / 100
     
     return roundedeth.toString();
     
@@ -26,6 +26,15 @@ async function fetchgas(): Promise<any>{
     
 
 }
+let currentDataeth = { etherprice: 0, ethergas :0 };
+
+
+
+setInterval(async () => {
+    const eth = await fetchdata();
+    const ethgas = await fetchgas();
+    currentDataeth = { etherprice: eth, ethergas : ethgas };
+}, 5000);
 
 
 
@@ -33,13 +42,8 @@ async function fetchgas(): Promise<any>{
 
 wss.on('connection', async function connection(ws) {
     console.log('A new client connected');
-    const eth = await fetchdata();
-    const ethgas = await fetchgas();
-    // Send a message to the connected client
-    ws.send(JSON.stringify({etherprice:eth,ethergas:ethgas}));
+    ws.send(JSON.stringify(currentDataeth));
     
-
-    // Event listener for receiving messages from the client
     ws.on('message', function incoming(message) {
         console.log('Received message:', message);
 

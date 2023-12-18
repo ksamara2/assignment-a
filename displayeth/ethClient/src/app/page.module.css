@@ -11,18 +11,55 @@
   justify-content: center;
   align-items: center;
   height: 100vh; /* Full viewport height */
-  background-color: rgba(0, 0, 0, 0.1); /* Slightly dark background */
+  background-color: white; /* Slightly dark background */
+}
+.priceWithImage {
+  display: flex;
+  align-items: center;
+}
+.githubButton {
+  background-color: white;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  vertical-align: middle;
+  text-decoration: none; 
+  border: 2px solid black;
+}
+.githubButton img {
+  height: 25px; 
+  width: 60px;
 }
 
+.ethImage {
+  width: 100px; 
+  height: auto;
+  vertical-align: middle;
+  margin-right: 1px;
+  background-color:rgb(20, 4, 77);
+  
+}
+.ethInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 .content {
-  background-color: white; /* White box */
-  padding: 20px;
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* A subtle shadow */
-  max-width: 600px; /* Maximum width */
-  width: 100%; /* Full width */
-  text-align: center; /* Centered text */
-  font-size: 1.8rem; /* Good sized font */
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(20, 4, 77); 
+  padding: 100px;
+  border-radius: 4px; 
+  box-shadow: 0 4px 8px rgba(218, 10, 10, 0.1); 
+  max-width: 1050px; 
+  width: 100%; 
+  text-align: center;
+  font-size: 1.8rem;
+  color: white;
+}
+.content span {
+  vertical-align: middle;
 }
 
 .description {
